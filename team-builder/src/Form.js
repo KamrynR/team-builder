@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
-import './Form.css'
+import React, { useState } from 'react';
+import './Form.css';
 
-function Form () {
+const Form = props => {
     const [user, setUser] = useState({username: '', email: '', role: ''});
-
     const userChange = e => {
         setUser({...user, [e.target.name]: e.target.value});
     };
     const handleSubmit = e => {
         e.preventDefault();
+        if(user) {
         setUser({ username: '', email: '' , role: ''});
+        props.setUserArr([...props.userArr, {user}]);
         console.log(user.username);
         console.log(user.email);
         console.log(user.role);
         console.log(user);
+        }
     };
 
     return (
